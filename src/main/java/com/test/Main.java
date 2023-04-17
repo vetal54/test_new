@@ -10,16 +10,11 @@ public class Main {
     List<String> cities = List.of("London", "Nlondo", "Tokyo", "Kyoto", "Moscow", "Donlon", "Scowmo", "Liverpool");
     List<String> copyOfCities = new ArrayList<>(cities);
     List<List<String>> answer = new ArrayList<>();
-
     for (String city : cities) {
-      char[] cityByte = city.toLowerCase().toCharArray();
-      Arrays.sort(cityByte);
       List<String> groupOfCities = new ArrayList<>();
-
       for (String copyOfCity : copyOfCities) {
-        char[] copyOfCityByte = copyOfCity.toLowerCase().toCharArray();
-        Arrays.sort(copyOfCityByte);
-        if (Arrays.equals(cityByte, copyOfCityByte)) {
+        if (Arrays.equals(city.toLowerCase().chars().sorted().toArray(),
+            copyOfCity.toLowerCase().chars().sorted().toArray())) {
           groupOfCities.add(copyOfCity);
         }
       }
@@ -28,7 +23,6 @@ public class Main {
         copyOfCities.removeAll(groupOfCities);
       }
     }
-
     System.out.println(answer);
   }
 }
